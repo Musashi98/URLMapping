@@ -1,10 +1,10 @@
 {
-  "name": "url_large-short_mapping",
+  "name": "URLMapping",
   "version": "1.0.0",
-  "description": "large-short url sizes mapping app",
+  "description": "long-short url sizes mapping app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.ts"
+    "start": "nodemon ./index.js"
   },
   "keywords": [
     "url",
