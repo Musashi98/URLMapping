@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const { Schema } = mongoose;
 
@@ -6,12 +7,12 @@ const urlPairSchema = new Schema({
   longURL: {
     type: String,
     required: true,
-    maxLength: 2048,
+    maxLength: 2048 - process.env.URL_PREFIX.length,
   },
   shortURL: {
     type: String,
     required: true,
-    maxLength: 22,
+    maxLength: 22 - process.env.URL_PREFIX.length,
   },
 });
 
