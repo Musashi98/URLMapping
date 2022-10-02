@@ -17,7 +17,12 @@ module.exports.getMatch = catchErrors(async (req, res) => {
     if (!findResult) {
       const generatedString = await generateString();
 
-      // add the string pair to the DB
+      const newPair = new URLPair({
+        longURL: urlRest,
+        shortURL: generatedString,
+      });
+
+      const result = await newPair.save();
 
       res.status(200).send(prefix + generatedString);
     } else {
