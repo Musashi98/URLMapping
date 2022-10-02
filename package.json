@@ -1,0 +1,23 @@
+{
+  "name": "url_large-short_mapping",
+  "version": "1.0.0",
+  "description": "large-short url sizes mapping app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.ts"
+  },
+  "keywords": [
+    "url",
+    "shortener",
+    "mapping"
+  ],
+  "author": "Musashi98",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.3"
+  }
+}
