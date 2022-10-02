@@ -1,10 +1,10 @@
 require("dotenv").config();
 
 module.exports.separateUrl = (url) => {
-  let prefixLength = process.env.URL_PREFIX.length;
-
   let prefix = "",
     urlRest = "";
+
+  let prefixLength = url.length > 22 ? process.env.LONG_URL_PREFIX.length : process.env.SHORT_URL_PREFIX.length;
 
   if (prefixLength == 0) {
     for (let i = url.length - 1; i >= 0; i--) {

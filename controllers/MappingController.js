@@ -1,8 +1,8 @@
 // My imports
 const URLPair = require("../models/URLPair");
-const CustomError = require("../utils/CustomError");
 const catchErrors = require("../utils/catchErrors");
 const { separateUrl } = require("../utils/urlSeparator");
+const { generateString } = require("../utils/stringGenerator");
 
 // GET handlers
 
@@ -15,9 +15,9 @@ module.exports.getMatch = catchErrors(async (req, res) => {
     const findResult = await URLPair.findOne({ longURL: urlRest }, { _id: false, longURL: false });
 
     if (!findResult) {
-      let generatedString = "";
+      const generatedString = await generateString();
 
-      // here goes the short string generation
+      // add the string pair to the DB
 
       res.status(200).send(prefix + generatedString);
     } else {

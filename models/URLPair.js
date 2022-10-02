@@ -7,12 +7,12 @@ const urlPairSchema = new Schema({
   longURL: {
     type: String,
     required: true,
-    maxLength: 2048 - process.env.URL_PREFIX.length,
+    maxLength: 2048 - process.env.LONG_URL_PREFIX.length,
   },
   shortURL: {
     type: String,
     required: true,
-    maxLength: 22 - process.env.URL_PREFIX.length,
+    maxLength: 22 - process.env.SHORT_URL_PREFIX.length,
   },
 });
 
