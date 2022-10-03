@@ -26,7 +26,7 @@ There are 3 endpoints, one to get the short url given a long one (does'nt genera
 - SERVER_ADDRESS/mapping/getLong/?url=SOME_URL
 - SERVER_ADDRESS/mapping/generateShort/?url=SOME_URL
 
-Here SERVER_ADDRESS is the server address (ip:port) and SOME_URL is some URL to process by the endpoint.
+Here SERVER_ADDRESS is the server address (ip:port) and SOME_URL is some url to process by the endpoint.
 
     e.g. http://127.0.0.1:5000/mapping/getLong/?url=www.us.com/G1uH25iwO36
 
