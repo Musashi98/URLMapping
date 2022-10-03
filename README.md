@@ -20,7 +20,7 @@ When the script is executed, it will first try to connect to the database, and, 
 
 ## About the API(s)
 
-There are 3 endpoints, one to get the short url given a long one (does'nt generates it if dont exist), one to get the long url given the short version, and one to generate (and stores to database) the short url given a long url. The 3 endpoints receive the corresponding url as a query param named 'url'. The following are the routes for each endpoint:
+There are 2 GET endpoints, one to get the short url given a long one (does'nt generates it if dont exist) and one to get the long url given the short version; and a POST endpoint to generate (and stores to database) the short url given a long url. The 3 endpoints receive the corresponding url as a query param named 'url'. The following are the routes for each endpoint:
 
 - SERVER_ADDRESS/mapping/getShort/?url=SOME_URL
 - SERVER_ADDRESS/mapping/getLong/?url=SOME_URL
