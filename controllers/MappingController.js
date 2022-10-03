@@ -10,6 +10,8 @@ module.exports.getMatch = catchErrors(async (req, res) => {
   // get the url from a query variable named 'url'
   const url = req.query.url;
 
+  if (!url) res.status(404).send("No url to process provided");
+
   const { prefix, urlRest } = separateUrl(url);
 
   if (url.length > 22) {
