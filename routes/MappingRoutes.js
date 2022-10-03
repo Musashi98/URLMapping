@@ -5,6 +5,11 @@ const router = express.Router();
 
 // GET routes
 
-router.get("/", mappingController.getMatch);
+router.get("/getShort/", mappingController.getShort);
+router.get("/getLong/", mappingController.getLong);
+
+// POST routes
+
+router.get("/generateShort/", mappingController.generateShort);
 
 module.exports = router;
