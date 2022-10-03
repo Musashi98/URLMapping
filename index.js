@@ -34,11 +34,10 @@ app.use((err, req, res, next) => {
 
 // Server configuration
 const SERVICE_PORT = process.env.SERVICE_PORT || 5000;
-const DB_URL = process.env.DB_URL;
-const DB_NAME = process.env.DB_NAME;
+const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 
 mongoose
-  .connect(`${DB_URL}/${DB_NAME}`, { useNewUrlParser: true })
+  .connect(`${DB_CONNECTION_STRING}`, { useNewUrlParser: true })
   .then(() => {
     console.log("Connection to the database succesfully established");
     app.listen(SERVICE_PORT, () => {
