@@ -18,19 +18,27 @@ or, if you preffer:
 
 When the script is executed, it will first try to connect to the database, and, if succesfully, it will start the server. If any error occurs the console should display it.
 
-## About the API
+## About the API(s)
 
-Only one endpoint was created. You just only send your url to this endpoint, short or long, the controller will determine its length assuming short urls are only 22 bytes (22 characters), and respond according to the corresponding length.
+There are 3 endpoints, one to get the short url given a long one (does'nt generates it if dont exist), one to get the long url given the short version, and one to generate (and stores to database) the short url given a long url. The 3 endpoints receive the corresponding url as a query param named 'url'. The following are the routes for each endpoint:
 
-To test the endpoint you can make a request to: SERVER_ADDRESS/mapping/?url=SOME_URL, where SERVER_ADDRESS is the address (ip and port) of the server executing the app, and SOME_URL is the url, long or short, that you want to map.
+- SERVER_ADDRESS/mapping/getShort/?url=SOME_URL
+- SERVER_ADDRESS/mapping/getLong/?url=SOME_URL
+- SERVER_ADDRESS/mapping/generateShort/?url=SOME_URL
 
-    e.g. http://127.0.0.1:5000/mapping/?url=www.us.com/iwhkjsndqgwhjebwqmbqwhgkajhsdajhvjqhefwqwfekvwdkvqwe
+Here SERVER_ADDRESS is the server address (ip:port) and SOME_URL is some URL to process by the endpoint.
 
-The previous address is an example of request, using a local server and an example url.
+    e.g. http://127.0.0.1:5000/mapping/getLong/?url=www.us.com/G1uH25iwO36
+
+In this example case the request is sended to a local server and the endpoint used is to get the long version of the url 'www.us.com/G1uH25iwO36'.
 
 ## How the API works
 
-The created endpoint will take the given url, classify it in short or long, separate his prefix from the rare string in his back, and take the rare string to check in the database for a correspondent pair of the other length. If the pair is found, the endpoint will return it in the response object's body, if not, depends on the url length, if it is short it will throw a 404 error saying the given url does'nt have a long match, and if it is long, a short random string is generated (watching for non existance in the database) and sended back after inserted the new mapping data to the database.
+The created endpoints will take the given url, separate his prefix from the rare string in his back, and take the rare string to check in the database for the corresponding action:
+
+- The getShort endpoint will search if there is a short version in the database and send it in the request body, if not is sends a 404 status code.
+- The getLong endpoint will search if there is a long url match in the database and send it in the request body, if not is sends a 404 status code.
+- The generateShort endpoint will search if there is a short version in the database and send a 404 status code if positive, if not it generates a new one (watching for non existing ones), stores the long-short match in the database and sends the short version in the request body.
 
 ## Configuration file
 
